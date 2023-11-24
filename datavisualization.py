@@ -47,26 +47,7 @@ def data_vis():
     fig.update_yaxes(showgrid=False)
     a.append(fig)
     fig.show()
-    
 
-    data_num = data[numer]
-    data_num_corr = data_num.corr()
-    fig = go.Figure()
-    fig.add_trace(
-        go.Heatmap(
-            x = data_num_corr.columns,
-            y = data_num_corr.index,
-            z = np.array(data_num_corr),
-            text=data_num_corr.values,
-            texttemplate='%{text:.2f}',
-            
-        )
-    )
-    fig.update_layout(template='plotly_dark')
-    fig.update_xaxes(showgrid=False)
-    fig.update_yaxes(showgrid=False)
-    a.append(fig)
-    fig.show()
 
     for numerical_feature in numer:
         fig = px.box(data, y=numerical_feature)
