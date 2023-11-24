@@ -10,11 +10,10 @@ def feat_eng():
         data[col] = label_encoder.fit_transform(data[col])
 
     data.dtypes
-
-    data.to_csv('final.csv', index=False)
-
     data.isnull().sum()
     data.duplicated().sum()
+
+    data.to_csv('final.csv', index=False)
 
     return data
 
