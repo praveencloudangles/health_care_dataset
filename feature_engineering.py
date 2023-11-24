@@ -1,5 +1,9 @@
 from data_cleaning import data_cleaning
 from sklearn.preprocessing import LabelEncoder
+from imblearn.over_sampling import SMOTE
+from collections import Counter
+import pandas as pd
+
 
 label_encoder = LabelEncoder()
 def feat_eng():
