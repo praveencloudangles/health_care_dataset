@@ -4,16 +4,17 @@ from sklearn.preprocessing import LabelEncoder
 label_encoder = LabelEncoder()
 def feat_eng():
     data = data_cleaning()
-    data.replace({'Test Results':{'Normal':0,'Abnormal':1, "Inconclusive":2}},inplace=True)
-    print("data------------------",data)
 
-    columns_to_encode = ['Name', 'Gender', 'Blood Type', 'Medical Condition', 'Date of Admission', 'Doctor', 'Hospital', 'Insurance Provider', "Admission Type", "Discharge Date", "Medication"]
+    columns_to_encode = ['name', 'gender', 'blood_type', 'medical_condition', 'date_of_admission', 'doctor', 'hospital', 'insurance_provider', "admission_type", "medication"]
     for col in columns_to_encode:
         data[col] = label_encoder.fit_transform(data[col])
 
-    print("data-----", data.dtypes)
+    data.dtypes
 
     data.to_csv('final.csv', index=False)
+
+    data.isnull().sum()
+    data.duplicated().sum()
 
     return data
 
