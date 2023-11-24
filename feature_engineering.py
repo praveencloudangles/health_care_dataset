@@ -13,6 +13,14 @@ def feat_eng():
     data.isnull().sum()
     data.duplicated().sum()
 
+    data['billing_amount'] = data['billing_amount'].astype('int')
+
+    x = data.drop('test_results', axis=1)
+    y = data['test_results']
+    oversample = SMOTE()
+    X, Y = oversample.fit_resample(x, y)
+    data = pd.concat([x, pd.Series(Y, name='test_results')], axis=1)
+
     data.to_csv('final.csv', index=False)
 
     return data
